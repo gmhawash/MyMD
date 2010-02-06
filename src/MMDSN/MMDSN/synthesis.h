@@ -1,4 +1,4 @@
-#define NBITS 20
+#define NBITS 3
 #define BUF_SIZE (1LL << NBITS)
 
 

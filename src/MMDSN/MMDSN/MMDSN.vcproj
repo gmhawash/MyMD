@@ -25,6 +25,7 @@
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
+			ManagedExtensions="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -45,12 +46,12 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
-				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				DebugInformationFormat="4"
+				DebugInformationFormat="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -65,6 +66,7 @@
 				Name="VCLinkerTool"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
+				AssemblyDebug="1"
 				SubSystem="1"
 				TargetMachine="1"
 			/>
@@ -96,6 +98,7 @@
 			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
+			ManagedExtensions="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -116,9 +119,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="C:\mh\PSU\Quantum\MMD\src\MMDSN\Inputs"
 				PreprocessorDefinitions="WIN64;_DEBUG;_CONSOLE"
-				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -137,6 +141,7 @@
 				Name="VCLinkerTool"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
+				AssemblyDebug="1"
 				SubSystem="1"
 				TargetMachine="17"
 			/>
@@ -313,6 +318,10 @@
 		</Configuration>
 	</Configurations>
 	<References>
+		<ProjectReference
+			ReferencedProjectIdentifier="{BFAFB90B-3F1C-4BDC-AD89-57F1C8B481B0}"
+			RelativePathToProject=".\AlgoBucket\AlgoBucket.vcproj"
+		/>
 	</References>
 	<Files>
 		<Filter
@@ -322,10 +331,6 @@
 			>
 			<File
 				RelativePath=".\sequence.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\starting with equations.cpp"
 				>
 			</File>
 			<File

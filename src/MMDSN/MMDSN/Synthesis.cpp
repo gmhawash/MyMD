@@ -8,9 +8,13 @@
 #include <malloc.h>
 #include <math.h>
 #include <windows.h>
+#include <msclr\marshal.h>
 #include "synthesis.h"
 
 using namespace std;
+using namespace msclr::interop;
+using namespace System;
+
 __int64 InitInput(__int64 nBits);
 __int64 NextInput();
 __int64 InitOutput(__int64 currentTerm, int option=0);
@@ -25,51 +29,60 @@ __int64 nGate=0;
 
 #define PROFILE 1
 
+#ifdef PROFILE
+  #define COUT(x) x
+#else
+  #define COUT(x) 
+#endif
+
 int main()
 {
-	ofstream f("output.txt", ios::out);
-	
 	__int64 t1, t2, freq;
 	QueryPerformanceFrequency((LARGE_INTEGER*)&freq);
-	freq = freq / 1000;	// milliseconds.
 	QueryPerformanceCounter((LARGE_INTEGER*)&t1);
 
-	for (int nSeq=0; nSeq < 1; nSeq ++) {
+  marshal_context ctx;
+	for (int nSeq=0; nSeq < 100; nSeq ++) {
+
 		nGate = 0;
-		InitInput(nBits);
+		if (InitInput(nBits) < 0)
+		  break;
+		  
 		InitOutput(0);
-		__int64 inTerm;
+		__int64 inTerm, outTerm;
+
+	  COUT(
+	    String^ s = "Sequence-" + nBits.ToString() + "-" + nSeq.ToString() +  ".csv" ;
+		  ofstream f(ctx.marshal_as<const char*>(s) , ios::out)
+		  );
 		
 		while ( (inTerm = NextInput()) >= 0) {
-	#ifndef PROFILE	
-			cout << "Term: " <<		inTerm << "\r";
-	#endif		
-			__int64 outTerm = NextOutput();
+			outTerm = NextOutput();
 			
-	#ifndef PROFILE	
-			p[inTerm] = outTerm;
-
-			for (__int64 i = 0; i<inTerm; i++)
-				if (outTerm == p[i])
-					cout << "Not Unitary - InTerm: " << inTerm << " outTerm: " << outTerm << "\n";
-			f << inTerm << "  " << outTerm << "\n";
-
-	#endif		
+  		COUT(cout << "[in,out]: [" <<	inTerm << "," << outTerm << "]\n");
 			ProcessTerm(inTerm, outTerm);
+			COUT( f << 	inTerm << "," << outTerm << "\n");
 		}
 		
-	#ifndef PROFILE	
-		f << "Gate:\n";
-		for (__int64 i=0; i<nGate; i++) {
-			f << c[i] << " " << m[i] << "\n";
-		}
-	#endif		
+		COUT (cout << "Gates: " << nGate << "\n");
+	  COUT(
+		  f << "\nControl,," ;
+		  for (__int64 i=0; i<nGate; i++) {
+			  f << c[i] << "," ;
+		  }
+		  f << "\nMask,," ;
+		  for (__int64 i=0; i<nGate; i++) {
+			  f <<  m[i] << ",";
+		  }
+	    f.flush();
+	    f.close();
+	  )		
 	}
 	QueryPerformanceCounter((LARGE_INTEGER*)&t2);
 
-	cout << "Total Time: " << (t2 - t1) / freq << "\n";
-	f.flush();
-	f.close();
+	cout << "Total Ticks: " << (t2 - t1)  << "\n";
+	cout << "Frequency: "   << freq << "\n";
+	cout << "Total Time: "  << 1000*(t2 - t1) / freq << "\n";
 }
 
 /*

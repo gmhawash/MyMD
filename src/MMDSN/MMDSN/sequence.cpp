@@ -7,28 +7,71 @@ __int64 gSequence;
 __int64 nTerms;
 __int64 nMask;
 
-using namespace std ;
 
+using namespace System::Collections::Generic;
+using namespace std ;
+using namespace AlgoBucket;
+  
+ 
+#define STEADMAN
+  
+#ifdef STEADMAN
+  public ref class Globals abstract sealed {
+  public:
+     static Steadman^ Steadman;
+     static List<__int64>^ Sequence;
+  };
+#endif   
+
+  /// __int64 InitInput(__int64 nBits)/// 
+  ///
+  /// Inputs:
+  ///
+  /// Outputs:
+  ///
 __int64 InitInput(__int64 nBits)
 {
 	gSequence = 0;
 	nTerms = 1LL << nBits;
+
+#ifdef SEQUENTIAL
 	
 	nMask = 0;
 	for(__int64 i = 0; i<nBits; i++) 
 		nMask |= 1LL << i;
 
+#endif
+
+#ifdef STEADMAN
+  if (Globals::Steadman == nullptr)
+    Globals::Steadman = gcnew Steadman(nBits);
+    
+  Globals::Sequence = Globals::Steadman->Next();
+  if (Globals::Sequence == nullptr)
+    return -1;
+#endif
+
 	return gSequence;	
 }
 
-// natural order sequence
+  
+  
+  /// __int64 NextInput()/// // natural order sequence
+  ///
+  /// Inputs:
+  ///
+  /// Outputs:
+  ///
 __int64 NextInput()
 {
-		
+#ifdef STEADMAN
+  return gSequence < Globals::Sequence->Count ? Globals::Sequence[gSequence++] : -1;
+#endif
+
+#ifdef SEQUENTIAL
 	return gSequence < nTerms ? gSequence++ : -1;
+#endif
 }
-
-
 
 
 // Define a template class vector of int
@@ -37,6 +80,15 @@ typedef vector<__int64> IntVector ;
 IntVector Numbers(BUF_SIZE);
 __int64 gOutIndex=0;
 
+
+  
+  
+  /// __int64 InitOutput(__int64 nBits, int option)/// 
+  ///
+  /// Inputs:
+  ///
+  /// Outputs:
+  ///
 __int64 InitOutput(__int64 nBits, int option)
 {
     //Define an iterator for template class vector of strings
@@ -55,13 +107,26 @@ __int64 InitOutput(__int64 nBits, int option)
 		gOutIndex=0;	
 	return 0LL;
 }
-
-
+  
+  
+  /// __int64 NextOutput()/// 
+  ///
+  /// Inputs:
+  ///
+  /// Outputs:
+  ///
 __int64 NextOutput()
 {
 	return gOutIndex < BUF_SIZE ? Numbers[gOutIndex++] : -1LL;
 }
-
+  
+  
+  /// __int64 InitOutputY(__int64 currentTerm, int option)/// 
+  ///
+  /// Inputs:
+  ///
+  /// Outputs:
+  ///
 __int64 InitOutputY(__int64 currentTerm, int option)
 {	
 		__int64 gOut=0;
@@ -107,6 +172,14 @@ __int64 InitOutputY(__int64 currentTerm, int option)
 
 // Morphed from Nouraddin's starting_with_equations.cpp file.
 // This setup does not generate a unitary in/out combination 
+  
+  
+  /// __int64 InitOutputX(__int64 currentTerm, int option)/// 
+  ///
+  /// Inputs:
+  ///
+  /// Outputs:
+  ///
 __int64 InitOutputX(__int64 currentTerm, int option)
 {	
 		__int64 gOut=0;
