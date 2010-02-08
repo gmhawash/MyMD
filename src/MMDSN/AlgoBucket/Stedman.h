@@ -13,24 +13,27 @@ namespace AlgoBucket {
     ///
 	  public ref class Input : Permutation {
 	    public:
-	      Input (__int64 nBits) : Permutation (nBits) 
+	      Input (ULONGLONG nBits) : Permutation (nBits) 
 	      {
 	        // remove first and last from input list (00..0, 11...1).
 	        m_inputList.RemoveAt(0);
 	        m_inputList.RemoveAt(m_inputList.Count-1);
           m_nTerms -= 2;
+          
           m_nPermutations = Factorial(m_nTerms);
+          if (nBits > 4)
+            m_nPermutations = -1LL ;
    	    }
 	     
-	      /// List<__int64>^ Permutation::Next()/// 
+	      /// List<ULONGLONG>^ Permutation::Next()/// 
         ///
         /// Inputs:
         ///
         /// Outputs:
         ///
-        List<__int64>^ Input::Next()
+        List<ULONGLONG>^ Input::Next()
         {
-          List<__int64>^ list;
+          List<ULONGLONG>^ list;
           
           do {
             list = Permutation::Next();
@@ -43,20 +46,20 @@ namespace AlgoBucket {
           return list;
         }
         
-        /// bool Valid(List<__int64>^ list)///   
+        /// bool Valid(List<ULONGLONG>^ list)///   
         ///
         /// Inputs:
         ///
         /// Outputs:
         ///
-        bool Input::Valid(List<__int64>^ list)
+        bool Input::Valid(List<ULONGLONG>^ list)
         {
-          for(__int64 i=1; i< list->Count; i++)
-          for(__int64 j=0; j < i; j++) { 
-      //    for (__int64 n = 0; n < m_nBits; n++) {
-      //      __int64 mask = ~(1 << n);
-            __int64 control_i = list[i]; //& mask;
-            __int64 control_j = list[j]; //& mask;
+          for(ULONGLONG i=1; i< list->Count; i++)
+          for(ULONGLONG j=0; j < i; j++) { 
+      //    for (ULONGLONG n = 0; n < m_nBits; n++) {
+      //      ULONGLONG mask = ~(1 << n);
+            ULONGLONG control_i = list[i]; //& mask;
+            ULONGLONG control_j = list[j]; //& mask;
             if ( control_i  == (control_i & control_j))
                   return false;
             }
@@ -67,15 +70,16 @@ namespace AlgoBucket {
 	
 	  public ref class Output : Permutation {
 	    public:
-	      Output (__int64 nBits) : Permutation (nBits) {
+	      Output (ULONGLONG nBits) : Permutation (nBits) {
+	        
 	     }
-	    /// List<__int64>^ Permutation::Next()/// 
+	    /// List<ULONGLONG>^ Permutation::Next()/// 
       ///
       /// Inputs:
       ///
       /// Outputs:
       ///
-      List<__int64>^ Output::Next()
+      List<ULONGLONG>^ Output::Next()
       {
         return Permutation::Random();
       }	     

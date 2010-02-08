@@ -1,6 +1,10 @@
 #pragma once
 #include "stdafx.h"
 #include <iostream>
+#include <windows.h>
+#include <vector>
+#include <algorithm>
+#include <functional>
 
 using namespace System;
 using namespace System::Collections::Generic;
@@ -9,26 +13,29 @@ using namespace std;
 namespace AlgoBucket {
   public ref class Permutation {
   protected:  
-    __int64 m_CurrentTerm;
-    __int64 m_nPermutations;
-    __int64 m_nBits,m_nBase;
-    __int64 m_nTerms;
-    List<__int64> m_inputList;
-    List<__int64> m_outputList;
+    ULONGLONG m_CurrentTerm;
+    ULONGLONG m_nPermutations;
+    ULONGLONG m_nBits,m_nBase;
+    ULONGLONG m_nTerms;
+    List<ULONGLONG> m_inputList;
+    List<ULONGLONG> m_outputList;
+    
+    // TODO: EXTENSION NEEDED FOR MORE THAN 32 BITS.
+    vector<UINT>* m_input;
     
 
-
   public: 
-    Permutation(__int64 nBits);
-    Permutation(__int64 nBits, __int64 nBase);
-    void Set(__int64 nBits, __int64 nBase);
-    List<__int64>^ Next();
-    List<__int64>^ Next(__int64 nIndex);
-    List<__int64>^ Random();
+    Permutation(ULONGLONG nBits);
+    Permutation(ULONGLONG nBits, ULONGLONG nBase);
+    void Set(ULONGLONG nBits, ULONGLONG nBase);
+    List<ULONGLONG>^ Next();
+    List<ULONGLONG>^ Next(ULONGLONG nIndex);
+    List<ULONGLONG>^ Random();
+    ULONGLONG Count(){return m_nPermutations;}
 
   protected:
-    void Branch(List<__int64>^ list, __int64 term, __int64 nBits);
-    __int64 Factorial(__int64 n);
+    void Branch(List<ULONGLONG>^ list, ULONGLONG term, ULONGLONG nBits);
+    ULONGLONG Factorial(ULONGLONG n);
   };
 
 }

@@ -12,7 +12,7 @@ int main(array<System::String ^> ^args)
     Stedman::Input inp(NBITS);
     Stedman::Output outp(NBITS);
     
-    List<__int64>^ ol, ^il;
+    List<ULONGLONG>^ ol, ^il;
     
     int count=0;
     while ( (ol = outp.Next()) != nullptr) {
@@ -26,7 +26,7 @@ int main(array<System::String ^> ^args)
       
       // Check propogation of patterns.
       for(int i=0; i < il->Count; i++) {
-        __int64 out = syn.Propogate(il[i], ol[i]);
+        ULONGLONG out = syn.Propogate(il[i], ol[i]);
         if (out != il[i]) {
           cout << "Failed " << "\n";
           for(int j=0; j < il->Count; j++) {

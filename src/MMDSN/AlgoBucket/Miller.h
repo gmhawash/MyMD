@@ -13,15 +13,15 @@ namespace AlgoBucket {
     ///
 	  public ref class Input : Permutation {
 	    public:
-	     Input (__int64 nBits) : Permutation (nBits) {}
+	     Input (ULONGLONG nBits) : Permutation (nBits) {}
 
-	    /// List<__int64>^ Permutation::Next()/// 
+	    /// List<ULONGLONG>^ Permutation::Next()/// 
       ///
       /// Inputs:
       ///
       /// Outputs:
       ///
-      List<__int64>^ Input::Next()
+      List<ULONGLONG>^ Input::Next()
       {
         // Always return the first list (natural order).
         m_CurrentTerm = 0;
@@ -31,16 +31,16 @@ namespace AlgoBucket {
 	
 	  public ref class Output : Permutation {
 	    public:
-	     Output (__int64 nBits) : Permutation (nBits) {
+	     Output (ULONGLONG nBits) : Permutation (nBits) {
 	     }
 	     
-	    /// List<__int64>^ Permutation::Next()/// 
+	    /// List<ULONGLONG>^ Permutation::Next()/// 
       ///
       /// Inputs:
       ///
       /// Outputs:
       ///
-      List<__int64>^ Output::Next()
+      List<ULONGLONG>^ Output::Next()
       {
         return Permutation::Random();
       }	     

@@ -9,6 +9,7 @@
 #define SetBit(n,v) ( (v & 1) << n) 
 
 #include <iostream>
+#include <windows.h>
 
 using namespace System::Collections::Generic;
 using namespace std;

@@ -2,10 +2,11 @@
 #include <functional>
 #include <vector>
 #include "synthesis.h"
+#include <windows.h>
 
-__int64 gSequence;
-__int64 nTerms;
-__int64 nMask;
+ULONGLONG gSequence;
+ULONGLONG nTerms;
+ULONGLONG nMask;
 
 
 using namespace System::Collections::Generic;
@@ -19,17 +20,17 @@ using namespace AlgoBucket;
   public ref class Globals abstract sealed {
   public:
      static Steadman^ Steadman;
-     static List<__int64>^ Sequence;
+     static List<ULONGLONG>^ Sequence;
   };
 #endif   
 
-  /// __int64 InitInput(__int64 nBits)/// 
+  /// ULONGLONG InitInput(ULONGLONG nBits)/// 
   ///
   /// Inputs:
   ///
   /// Outputs:
   ///
-__int64 InitInput(__int64 nBits)
+ULONGLONG InitInput(ULONGLONG nBits)
 {
 	gSequence = 0;
 	nTerms = 1LL << nBits;
@@ -37,7 +38,7 @@ __int64 InitInput(__int64 nBits)
 #ifdef SEQUENTIAL
 	
 	nMask = 0;
-	for(__int64 i = 0; i<nBits; i++) 
+	for(ULONGLONG i = 0; i<nBits; i++) 
 		nMask |= 1LL << i;
 
 #endif
@@ -56,13 +57,13 @@ __int64 InitInput(__int64 nBits)
 
   
   
-  /// __int64 NextInput()/// // natural order sequence
+  /// ULONGLONG NextInput()/// // natural order sequence
   ///
   /// Inputs:
   ///
   /// Outputs:
   ///
-__int64 NextInput()
+ULONGLONG NextInput()
 {
 #ifdef STEADMAN
   return gSequence < Globals::Sequence->Count ? Globals::Sequence[gSequence++] : -1;
@@ -75,28 +76,28 @@ __int64 NextInput()
 
 
 // Define a template class vector of int
-typedef vector<__int64> IntVector ;
+typedef vector<ULONGLONG> IntVector ;
 
 IntVector Numbers(BUF_SIZE);
-__int64 gOutIndex=0;
+ULONGLONG gOutIndex=0;
 
 
   
   
-  /// __int64 InitOutput(__int64 nBits, int option)/// 
+  /// ULONGLONG InitOutput(ULONGLONG nBits, int option)/// 
   ///
   /// Inputs:
   ///
   /// Outputs:
   ///
-__int64 InitOutput(__int64 nBits, int option)
+ULONGLONG InitOutput(ULONGLONG nBits, int option)
 {
     //Define an iterator for template class vector of strings
     typedef IntVector::iterator IntVectorIt ;
 
     IntVectorIt start, end, it ;
     
-    for (__int64 i=0; i<nTerms; i++) 
+    for (ULONGLONG i=0; i<nTerms; i++) 
 			Numbers[i] = i;
 
 		start = Numbers.begin() ;   // location of first element of Numbers
@@ -109,27 +110,27 @@ __int64 InitOutput(__int64 nBits, int option)
 }
   
   
-  /// __int64 NextOutput()/// 
+  /// ULONGLONG NextOutput()/// 
   ///
   /// Inputs:
   ///
   /// Outputs:
   ///
-__int64 NextOutput()
+ULONGLONG NextOutput()
 {
 	return gOutIndex < BUF_SIZE ? Numbers[gOutIndex++] : -1LL;
 }
   
   
-  /// __int64 InitOutputY(__int64 currentTerm, int option)/// 
+  /// ULONGLONG InitOutputY(ULONGLONG currentTerm, int option)/// 
   ///
   /// Inputs:
   ///
   /// Outputs:
   ///
-__int64 InitOutputY(__int64 currentTerm, int option)
+ULONGLONG InitOutputY(ULONGLONG currentTerm, int option)
 {	
-		__int64 gOut=0;
+		ULONGLONG gOut=0;
 
 #if 0
 		gOut |= SetBit(0,   Not(2) );
@@ -174,15 +175,15 @@ __int64 InitOutputY(__int64 currentTerm, int option)
 // This setup does not generate a unitary in/out combination 
   
   
-  /// __int64 InitOutputX(__int64 currentTerm, int option)/// 
+  /// ULONGLONG InitOutputX(ULONGLONG currentTerm, int option)/// 
   ///
   /// Inputs:
   ///
   /// Outputs:
   ///
-__int64 InitOutputX(__int64 currentTerm, int option)
+ULONGLONG InitOutputX(ULONGLONG currentTerm, int option)
 {	
-		__int64 gOut=0;
+		ULONGLONG gOut=0;
 	
 		gOut |= SetBit(0,   Not(1)  & Bit(14)  | Bit(7)); 
 		gOut |= SetBit(1,   Bit(5)  | Bit(17)  | Bit(4)); 

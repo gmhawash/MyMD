@@ -16,10 +16,10 @@ namespace AlgoBucket {
 	public ref class Synthesis 
 	{
 	public:
-		Synthesis(__int64 bits);
-    __int64 GateCount(){return nGate;}
-    void Process(__int64 inTerm, __int64 outTerm);
-    __int64 Propogate(__int64 inTerm, __int64 outTerm);
+		Synthesis(ULONGLONG bits);
+    ULONGLONG GateCount(){return nGate;}
+    void Process(ULONGLONG inTerm, ULONGLONG outTerm);
+    ULONGLONG Propogate(ULONGLONG inTerm, ULONGLONG outTerm);
 
 	protected:
 		/// <summary>
@@ -30,11 +30,12 @@ namespace AlgoBucket {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-	array<__int64>^ p ;
-	array<__int64>^ m ;
-	array<__int64>^ c ;
-  __int64 nGate;
-  __int64 nBits;
+  public:
+	array<ULONGLONG>^ p ;
+	array<ULONGLONG>^ m ;
+	array<ULONGLONG>^ c ;
+  ULONGLONG nGate;
+  ULONGLONG nBits;
 
 
 #pragma region Windows Form Designer generated code
