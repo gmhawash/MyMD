@@ -13,8 +13,10 @@ namespace AlgoBucket {
     ///
 	  public ref class Input : Permutation {
 	    public:
-	     Input (ULONGLONG nBits) : Permutation (nBits) {}
-
+	      Input (ULONGLONG nBits) : Permutation (nBits) {
+	        Name = "Miller";
+	      }
+        
 	    /// List<ULONGLONG>^ Permutation::Next()/// 
       ///
       /// Inputs:
@@ -24,8 +26,8 @@ namespace AlgoBucket {
       List<ULONGLONG>^ Input::Next()
       {
         // Always return the first list (natural order).
-        m_CurrentTerm = 0;
-        return Permutation::Next();
+        
+        return %m_inputList;
       }
 	  };
 	
@@ -44,7 +46,6 @@ namespace AlgoBucket {
       {
         return Permutation::Random();
       }	     
-	     
 	  };
 }
 }

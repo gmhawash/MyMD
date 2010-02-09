@@ -15,8 +15,10 @@ namespace AlgoBucket {
 	  public ref class Input : Permutation {
 	    List<array<UInt64>^>^ m_inputArray;
 	    public:
+	    
 	      Input (ULONGLONG nBits) : Permutation(nBits)
 	      {
+	        Name = "Nouraddin";
 	        m_inputArray = gcnew List<array<UInt64>^>(nBits);
 	        m_inputArray->Add(gcnew array<UInt64>(1){0});
           MakeList(nBits,1);

@@ -24,9 +24,6 @@ void ProcessTerm(ULONGLONG inTerm, ULONGLONG outTerm);
 ULONGLONG NextOutput();
 
 ULONGLONG nBits = NBITS;
-ULONGLONG p[BUF_SIZE];
-ULONGLONG c[BUF_SIZE];
-ULONGLONG m[BUF_SIZE];
 ULONGLONG nGate=0;
 
 #define PROFILE 1
@@ -36,10 +33,103 @@ ULONGLONG nGate=0;
 #else
   #define COUT(x) 
 #endif
-void DoClrTest();
+void FromFile();
+void NoFile();
+
 int main()
 {
-  DoClrTest();
+  FromFile();
+}
+
+void FromFile()
+{
+	ULONGLONG t1, t2, freq;
+	QueryPerformanceFrequency((LARGE_INTEGER*)&freq);
+	QueryPerformanceCounter((LARGE_INTEGER*)&t1);
+
+  marshal_context ctx;
+  
+  Miller::Input inp(NBITS);
+  FileSrc::Output outp(NBITS);
+  int maxCount = Math::Min(inp.Count(), (ULONGLONG)10000);
+  List<ULONGLONG>^ il;
+  List<ULONGLONG>^ ol;
+
+  COUT(
+    String^ sDir = nBits.ToString() + "-bits";
+    if ( !Directory::Exists(sDir) )
+      Directory::CreateDirectory(sDir);
+    
+    String^ s = sDir + "\\Summary-" + inp.Name + nBits.ToString() +  ".csv" ;
+    ofstream fs(ctx.marshal_as<const char*>(s) , ios::out);
+	  fs << "Sequence, Total Gates, Total Ticks, Frequency, Total Time\n"  ;
+	  fs << "AVERAGE,=Average(B4:B10002),=Average(C4:C10002),,=Average(E4:E10002)\n"  ;
+  );
+    
+  int nCount=0;
+  while ( nCount++ < maxCount && (il = inp.Next()) != nullptr) {
+  
+	  COUT(
+      String^ s = sDir + "\\" + inp.Name + "-" + nBits.ToString() + "-" + nCount.ToString() +  ".csv" ;
+	    ofstream f(ctx.marshal_as<const char*>(s) , ios::out)
+	    );
+  
+    cout << nCount << "\n";
+    ol = outp.Next();
+  	QueryPerformanceCounter((LARGE_INTEGER*)&t1);
+    Synthesis syn(NBITS);
+    for(int i=0; i < il->Count; i++) {
+      syn.Process(il[i], ol[il[i]]);    
+    }
+  	QueryPerformanceCounter((LARGE_INTEGER*)&t2);
+    
+    // Check propogation of patterns.
+    for(int i=0; i < il->Count; i++) {
+      ULONGLONG out = syn.Propogate(il[i], ol[il[i]]);
+ 			COUT( (f << 	il[i] << "," << ol[il[i]] << "\n") );
+      
+      if (out != il[i]) {
+        f << "Failed " << "\n";
+        for(int j=0; j < il->Count; j++) {
+          f << "[" << il[j] << "," << ol[il[j]] << "]\n";
+        }
+        break;
+      }
+    }
+    
+    COUT(
+	    f << "\nControl,," ;
+	    for (ULONGLONG i=0; i<syn.GateCount(); i++) {
+		    f << syn.c[i] << "," ;
+	    }
+	    f << "\nMask,," ;
+	    for (ULONGLONG i=0; i<syn.GateCount(); i++) {
+		    f <<  syn.m[i] << ",";
+	    }
+	    
+
+      f << "\nTotal Gates, " << syn.GateCount()  << "\n";
+      f << "\nTotal Ticks, " << (t2 - t1)  << "\n";
+      f << "Frequency, "   << freq << "\n";
+      f << "Total Time, "  << 1000000*(t2 - t1) / freq << "\n";
+
+      fs << "\n" << nCount ; 
+      fs << ", " << syn.GateCount()  ;
+      fs << ", " << (t2 - t1) ;
+      fs << ", "   << freq;
+      fs << ", "  << 1000000*(t2 - t1) / freq ;
+
+  
+      f.flush();
+      f.close();
+    )		
+  }
+  fs.close();
+
+}
+
+void NoFile()
+{
 	ULONGLONG t1, t2, freq;
 	QueryPerformanceFrequency((LARGE_INTEGER*)&freq);
 	QueryPerformanceCounter((LARGE_INTEGER*)&t1);

@@ -1,2 +1,6 @@
-*-bits/*
+*-bits*
+/*-bits*/*
+*/*.suo
+*/*.ncb
 *Debug/*
+*Debug*

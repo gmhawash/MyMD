@@ -25,6 +25,7 @@ namespace AlgoBucket {
     
 
   public: 
+    property String^ Name;
     Permutation(ULONGLONG nBits);
     Permutation(ULONGLONG nBits, ULONGLONG nBase);
     void Set(ULONGLONG nBits, ULONGLONG nBase);

@@ -158,6 +158,4 @@ namespace AlgoBucket {
       
     return %l;
   }
-
-
 }

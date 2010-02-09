@@ -6,4 +6,5 @@
 #include "miller.h"
 #include "stedman.h"
 #include "Nouraddin.h"
+#include "FileSrc.h"
 
