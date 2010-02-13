@@ -14,18 +14,44 @@ namespace AlgoBucket {
     ///
 	  public ref class Input : Permutation {
 	    List<array<UInt64>^>^ m_inputArray;
+	    array<int>^ m_permList;
+	    array<vector<ULONGLONG> *>^ m_inArray;
 	    public:
 	    
 	      Input (ULONGLONG nBits) : Permutation(nBits)
 	      {
 	        Name = "Nouraddin";
-	        m_inputArray = gcnew List<array<UInt64>^>(nBits);
-	        m_inputArray->Add(gcnew array<UInt64>(1){0});
+          m_inArray = gcnew array<vector<ULONGLONG>*>(nBits+1);
+          m_inArray[0] = new vector<ULONGLONG>(1, 0);
           MakeList(nBits,1);
-          m_inputArray->Add(gcnew array<UInt64>(1){(1<<nBits) - 1});
+          m_inArray[nBits] = new vector<ULONGLONG>(1, (1<<nBits) - 1);
+          
+          m_nPermutations = 1;
+          for each (vector<ULONGLONG>* a in m_inArray)
+            m_nPermutations *= a->size();
    	    }
-  
-  
+   	    
+   	    //void GenerateList()
+   	    //{
+   	    //  m_CurrentTerm = 0;
+   	    //  NextPermutation(0, m_Permutations
+   	    //}
+
+        //void NextPermutation(vector<ULONGLONG>* vCur, ULONGLONG listIndex)
+        //{
+        //  vector<ULONGLONG>* l=m_inArray[listIndex];
+        //  
+        //  for (i=0; i< l->size(); i++) {
+        //    vector<ULONGLONG>::iterator start, end;
+		      //  start = l->begin() ;   // location of first element of Numbers
+        //    end = l->end() ;       // one past the location last element of Numbers
+        //    next_permutation(start, end);
+        //  }
+        //    
+        //  ULONGLONG nSize = v->size();
+        //  NextPermutation(index % nSize, index / nSize, 
+        //}
+        
         /// void MakeList(ULONGLONG nBits, ULONGLONG nIndex)/// 
         ///
         /// Inputs:
@@ -36,19 +62,23 @@ namespace AlgoBucket {
         {
           if (nIndex >= nBits)
             return; 
-            
-	        m_inputArray->Add(gcnew array<UInt64>(Combination(nBits, nIndex)));
-          array<UInt64>^ last = m_inputArray[nIndex-1];
+          
+          m_inArray[nIndex] = new vector<ULONGLONG>(Combination(nBits, nIndex));
+          vector<ULONGLONG>* last = m_inArray[nIndex-1];
+          
+	        //m_inputArray->Add(gcnew array<UInt64>(Combination(nBits, nIndex)));
+          // array<UInt64>^ last = m_inputArray[nIndex-1];
                     
           int k=0;
           
-          for (int i=0; i< last->Length; i++) {
-            ULONGLONG l = last[i];
+          for (int i=0; i< last->size(); i++) {
+            ULONGLONG l = last->at(i);
             for(int j=0; j< nBits; j++) {
-              if (! (last[i] & (1<<j)) ) {
-                ULONGLONG newValue = last[i] | (1<<j);
-                if (! Exists(m_inputArray[nIndex], newValue) )
-                  m_inputArray[nIndex][k++] = newValue;
+              if (! (last->at(i) & (1<<j)) ) {
+                ULONGLONG newValue = last->at(i)| (1<<j);
+                vector<ULONGLONG>::iterator it =  find(m_inArray[nIndex]->begin(), m_inArray[nIndex]->end(), newValue);
+                if (it == m_inArray[nIndex]->end())
+                  m_inArray[nIndex]->at(k++) = newValue;
               }
             }
           }
@@ -96,30 +126,33 @@ namespace AlgoBucket {
         ///
         List<ULONGLONG>^ Input::Next()
         {
-          List<ULONGLONG> list;
-          
-          for (int j=0; j< m_inputArray->Count; j++) {
-            array<UInt64>^ l = m_inputArray[j];
-            vector<ULONGLONG> x(l->Length);
-            for(int i=0; i<l->Length; i++)
-              x[i] = l[i];
-              
-            random_shuffle(x.begin(), x.end());
-            
-            for(int i=0; i<l->Length; i++)
-              list.Add(x[i]);
+          if (m_CurrentTerm++ >= m_nPermutations) {
+            m_CurrentTerm = 0;
+            return nullptr;
           }
           
-          //do {
-          //  list = Permutation::Next();
-          //  cout << this->m_CurrentTerm << "\r";
-          //} while( list != nullptr && !Valid(list));
-          //if (list != nullptr) {
-          //  list->Add(m_nTerms+1);
-          //  list->Insert(0, 0);
-          //}
+          List<ULONGLONG> list;
+
+          if (m_permList == nullptr)
+            m_permList = gcnew array<int>(m_inArray->Length);
+
+          int carry = 1;
+          for (int i = 0; i < m_inArray->Length; i++) {
+            if (carry) {
+              ++m_permList[i] ;
+              carry = m_permList[i] / m_inArray[i]->size();
+              m_permList[i] %=  m_inArray[i]->size();
+              next_permutation(m_inArray[i]->begin(), m_inArray[i]->end());
+            }
+            
+            // Add the current list to array
+            for (int j=0; j < m_inArray[i]->size(); j++)
+              list.Add(m_inArray[i]->at(j));
+          }          
           return %list;
         }
+  
+
         
         /// bool Valid(List<ULONGLONG>^ list)///   
         ///
@@ -159,5 +192,6 @@ namespace AlgoBucket {
         return Permutation::Random();
       }	     
 	  };
+	  
 }
 }

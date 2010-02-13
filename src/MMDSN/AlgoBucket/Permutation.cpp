@@ -56,24 +56,29 @@ namespace AlgoBucket {
   ///
   List<ULONGLONG>^ Permutation::Next()
   {
-    // Use STL's next_permutation code.
-    m_input = new vector<UINT>(m_nTerms);
-    
-    for(ULONGLONG i=0; i<m_inputList.Count; i++) {
-      (*m_input)[i] = m_inputList[i];
+    // Use STL's next_permutation code.  Only do it once per full iteration of permutation
+    //
+    if ( ((void*) m_start) == NULL) {
+      m_input = new vector<UINT>(m_nTerms);
+      m_start = new vector<UINT>::iterator(m_input->begin());
+      m_end = new vector<UINT>::iterator(m_input->end()) ;       // one past the location last element of Numbers
+
+      for(ULONGLONG i=0; i<m_inputList.Count; i++) {
+        (*m_input)[i] = m_inputList[i];
+      }
     }
     
-    vector<UINT>::iterator start, end;
-    
-		start = m_input->begin() ;   // location of first element of Numbers
-    end = m_input->end() ;       // one past the location last element of Numbers
-  
-    next_permutation(start, end);
+    bool more = next_permutation(*m_start, *m_end);
     m_outputList.Clear();
     for (UINT i=0; i<m_nTerms; i++)
       m_outputList.Add((*m_input)[i]);
 
-    return %m_outputList;
+    // Reset for next cycle of iterations
+    if (!more) {
+      m_start = NULL;
+      return nullptr;
+    }  
+    return %m_outputList ;
   }
   
 /// List<ULONGLONG>^ Permutation::Next()/// 

@@ -232,6 +232,18 @@
 				>
 			</File>
 			<File
+				RelativePath=".\FileSrc.h"
+				>
+			</File>
+			<File
+				RelativePath=".\IAlgoClass.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Logger.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Miller.h"
 				>
 			</File>

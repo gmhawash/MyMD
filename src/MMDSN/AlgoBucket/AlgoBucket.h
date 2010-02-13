@@ -6,8 +6,14 @@ using namespace System;
 
 namespace AlgoBucket {
 
-	public ref class Class1
+	public interface class AlgoClass
 	{
-		// TODO: Add your methods for this class here.
+  public: 
+    //property String^ Name;
+    virtual List<ULONGLONG>^ Next();
+    virtual List<ULONGLONG>^ Random();
+    property ULONGLONG Count;	
+    property String^ FileName;
+    property String^ Name;
 	};
 }

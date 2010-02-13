@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CheckPattern", "CheckPatter
 		{BFAFB90B-3F1C-4BDC-AD89-57F1C8B481B0} = {BFAFB90B-3F1C-4BDC-AD89-57F1C8B481B0}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CompareFiles", "CompareFiles\CompareFiles.vcproj", "{119A90F3-AD4B-46ED-BDDF-96DD6DB95FDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -50,6 +52,12 @@ Global
 		{D0C084FC-8D1C-4C07-8BF3-F274C4819587}.Release|Win32.ActiveCfg = Release|Win32
 		{D0C084FC-8D1C-4C07-8BF3-F274C4819587}.Release|Win32.Build.0 = Release|Win32
 		{D0C084FC-8D1C-4C07-8BF3-F274C4819587}.Release|x64.ActiveCfg = Release|Win32
+		{119A90F3-AD4B-46ED-BDDF-96DD6DB95FDA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{119A90F3-AD4B-46ED-BDDF-96DD6DB95FDA}.Debug|Win32.Build.0 = Debug|Win32
+		{119A90F3-AD4B-46ED-BDDF-96DD6DB95FDA}.Debug|x64.ActiveCfg = Debug|Win32
+		{119A90F3-AD4B-46ED-BDDF-96DD6DB95FDA}.Release|Win32.ActiveCfg = Release|Win32
+		{119A90F3-AD4B-46ED-BDDF-96DD6DB95FDA}.Release|Win32.Build.0 = Release|Win32
+		{119A90F3-AD4B-46ED-BDDF-96DD6DB95FDA}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,3 +1,6 @@
+#pragma once
+#include "stdafx.h"
+
 // Defines
 /// 
 #define NBITS 4
@@ -10,6 +13,15 @@
 
 #include <iostream>
 #include <windows.h>
+#include <vector>
+#include <algorithm>
+#include <functional>
+#include <math.h>
+#include <msclr\marshal.h>
 
+using namespace System;
+using namespace System::IO;
+using namespace System::Runtime::InteropServices;
 using namespace System::Collections::Generic;
 using namespace std;
+using namespace msclr::interop;

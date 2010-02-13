@@ -12,9 +12,12 @@ namespace AlgoBucket {
     /// public ref class Input : Permutation {///     
     ///
 	  public ref class Input : Permutation {
+	    bool m_called;
 	    public:
+  	    
 	      Input (ULONGLONG nBits) : Permutation (nBits) {
-	        Name = "Miller";
+          Name = "Miller";
+	        m_called  = false;
 	      }
         
 	    /// List<ULONGLONG>^ Permutation::Next()/// 
@@ -26,7 +29,12 @@ namespace AlgoBucket {
       List<ULONGLONG>^ Input::Next()
       {
         // Always return the first list (natural order).
-        
+        if (m_called) {
+          m_called = false;
+          return nullptr;
+        }
+          
+        m_called =  true;
         return %m_inputList;
       }
 	  };
