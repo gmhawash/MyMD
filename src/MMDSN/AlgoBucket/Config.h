@@ -3,7 +3,7 @@
 
 // Defines
 /// 
-#define NBITS 4
+#define NBITS 5
 #define BUF_SIZE NBITS * (1LL << NBITS)
 
 /// Macros

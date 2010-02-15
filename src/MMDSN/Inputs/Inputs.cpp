@@ -19,13 +19,14 @@ public delegate List<ULONGLONG>^ Next();
 void GenerateAlgoSeq( Permutation^ inp, Next^ fnIn, String^ sDir);
 void GenerateRandomSeq();
 
-//#define NOURADDIN
-#define MILLER
+#define NOURADDIN
+//#define MILLER
+#define STEDMAN
 
 int main(array<System::String ^> ^args)
 {
 
-  for (int nBits=3; nBits<5; nBits++) {
+  for (int nBits=4; nBits<20; nBits++) {
     // Create directory if it does not exist
     String^ sDir = "..\\" + nBits.ToString() + "-bits-src";
     if ( !Directory::Exists(sDir) )
@@ -38,13 +39,12 @@ int main(array<System::String ^> ^args)
   Miller::Input inp(nBits);
   GenerateAlgoSeq(%inp, gcnew Next(%inp, &Miller::Input::Next), sDir);
 #elif  defined(STEDMAN)
-  FileSrc::Output inp(NBITS, "Stedman*", MAXINT);
-  FileSrc::Output outp(NBITS, "Random*", 50);
-  Synthesize(%inp, gcnew Next(%inp, &FileSrc::Output::Next),  %outp, gcnew Next(%outp, &FileSrc::Output::Next));
+  Stedman::Input inp(nBits);
+  GenerateAlgoSeq(%inp, gcnew Next(%inp, &Stedman::Input::Next), sDir);
 #endif
   }
   
-  //GenerateRandomSeq();
+
 }
 
 void GenerateRandomSeq()
@@ -80,18 +80,22 @@ void GenerateAlgoSeq(Permutation^ inp, Next^ fnNext, String^ sDir)
 {
     marshal_context ctx;
 
+    String^ s = sDir + "\\" + inp->Name + ".txt" ;
+    ofstream fs(ctx.marshal_as<const char*>(s) , ios::out);
+    cout << ctx.marshal_as<const char*>(s) << "\n";
+
     List<ULONGLONG>^ il;
     int nCount = 0;
     while( (il = fnNext()) != nullptr) {
-      String^ s = sDir + "\\" + inp->Name + "-" + nCount.ToString() +  ".txt" ;
-      ofstream fs(ctx.marshal_as<const char*>(s) , ios::out);
-      cout << ctx.marshal_as<const char*>(s) << "\r";
-              
+      cout << nCount << "\r";
+      fs << nCount << " ";  
       for (int i=0; i<il->Count; i++)
-        fs << il[i] << "\n";
-      
+        fs << il[i] << " ";
+        
+      fs << "\n";
       nCount++;
     }
+    fs.close();
 }
 
 void GenerateStedmanSeq()

@@ -4,6 +4,7 @@
  
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <stdlib.h>
 #include <malloc.h>
 #include <math.h>
@@ -30,13 +31,10 @@ ULONGLONG NextOutput();
 ULONGLONG nBits = NBITS;
 ULONGLONG nGate=0;
 
-#define PROFILE 1
 
-#ifdef PROFILE
-  #define COUT(x) x
-#else
-  #define COUT(x) 
-#endif
+#define COUT_SUMMARY(x) x
+#define COUT_SUMMARY2(x) 
+
 void OneInputPerFile();
 void NoFile();
 void AllInputsPerFile();
@@ -45,15 +43,16 @@ public delegate List<ULONGLONG>^ Next();
 
 
 //void Synthesize( Permutation^ inp, Next^ fnIn, FileSrc::Output^ outp, Next^ fnOut);
-void Synthesize( FileSrc::Output^ inp, Next^ fnIn, FileSrc::Output^ outp, Next^ fnOut);
+void Synthesize( FileSrc::Input^ inp, Next^ fnIn, FileSrc::Input^ outp, Next^ fnOut);
 
 
 //#define NOURADDIN 
 //#define MILLER 
-#define STEDMAN
+#define FILE_FILE
 
-int main()
+int main(array<System::String ^> ^args)
 {
+
 
 #ifdef NOURADDIN
   Nouraddin::Input inp(NBITS);
@@ -63,10 +62,15 @@ int main()
   Miller::Input inp(NBITS);
   FileSrc::Output outp(NBITS, "seq*", 50);
   Synthesize(%inp, gcnew Next(%inp, &Miller::Input::Next),  %outp, gcnew Next(%outp, &FileSrc::Output::Next));
-#elif  defined(STEDMAN)
-  FileSrc::Output inp(NBITS, "Miller*", MAXINT);
-  FileSrc::Output outp(NBITS, "Random*", 50);
-  Synthesize(%inp, gcnew Next(%inp, &FileSrc::Output::Next),  %outp, gcnew Next(%outp, &FileSrc::Output::Next));
+#elif  defined(FILE_FILE)
+  if (args->Length < 2) {
+    Console::WriteLine("Usage: MMDSN filespec1 \n");
+    return -1;
+  }
+
+  FileSrc::Input inp(NBITS, args[0] , MAXINT);
+  FileSrc::Input outp(NBITS, args[1], 50);
+  Synthesize(%inp, gcnew Next(%inp, &FileSrc::Input::Next),  %outp, gcnew Next(%outp, &FileSrc::Input::Next));
 #endif
   
  // AllInputsPerFile();
@@ -81,7 +85,7 @@ int main()
 ///
 /// Outputs:
 ///
-void Synthesize(FileSrc::Output^ inp, Next^ NextIn, FileSrc::Output^ outp, Next^ NextOut)
+void Synthesize(FileSrc::Input^ inp, Next^ NextIn, FileSrc::Input^ outp, Next^ NextOut)
 {
 	ULONGLONG t1, t2, freq;
 	ULONGLONG t3;
@@ -93,7 +97,7 @@ void Synthesize(FileSrc::Output^ inp, Next^ NextIn, FileSrc::Output^ outp, Next^
   List<ULONGLONG>^ il;
   List<ULONGLONG>^ ol;
 
-    COUT(
+    COUT_SUMMARY(
       // Make sure directory exists...
       String^ sDir = nBits.ToString() + "-bits";
       if ( !Directory::Exists(sDir) )
@@ -102,10 +106,9 @@ void Synthesize(FileSrc::Output^ inp, Next^ NextIn, FileSrc::Output^ outp, Next^
       // Create summary file
       String^ s = sDir + "\\A-Summary-" + DateTime::Now.ToBinary() + "-" + nBits.ToString() +  ".csv" ;
       ofstream fss(ctx.marshal_as<const char*>(s) , ios::out);
-//      s = inp->FileName;
-//      fss << ctx.marshal_as<const char*>("Stedman") << "\n";
-	    fss << "Stedman\n";
-	    fss << "Input,Output, Ticks, Time, Min Gates\n"  ;
+	    fss << ctx.marshal_as<const char*>(inp->SeqName) << ": " <<  ctx.marshal_as<const char*>(outp->SeqName);
+	    fss << "Input,Output, Ticks, Time, Min Gates, Total Time\n"  ;
+	    String^ oss;
     );
 
   UInt64 nMin;
@@ -115,18 +118,18 @@ void Synthesize(FileSrc::Output^ inp, Next^ NextIn, FileSrc::Output^ outp, Next^
     int nCount=0;
     t3=0; 
     
-    COUT(
+    COUT_SUMMARY2(
       // Create summary file
-      String^ s = sDir + "\\Summary-" + inp->FileName + "-" + outp->FileName + "-" + nBits.ToString() +  ".csv" ;
+      String^ s = sDir + "\\Summary-" + inp->Name + "-" + outp->Name + "-" + nBits.ToString() +  ".csv" ;
       ofstream fs(ctx.marshal_as<const char*>(s) , ios::out);
 	    fs << "Sequence, Function, Total Gates, Total Ticks, Frequency, Total Time\n"  ;
 	    fs << "AVERAGE,=Average(C4:C10002),=Average(D4:D10002),,=Average(F4:F10002)\n"  ;
     );
     
     nCount = 0;
-    nMin = Int32::MaxValue;
+    nMin = UInt64::MaxValue;
     
-    cout << ctx.marshal_as<const char*>(outp->FileName) << "\n";
+    cout << ctx.marshal_as<const char*>(outp->Name) << "\n";
     
     while ( (il = NextIn()) != nullptr) {
       cout << nCount++ << "\r";
@@ -140,7 +143,7 @@ void Synthesize(FileSrc::Output^ inp, Next^ NextIn, FileSrc::Output^ outp, Next^
         t3 += t2 - t1;      // keep track of total time per sequence
 
 	      if (false) if (syn.GateCount() <= nMin) {
-          String^ s = sDir + "\\" + inp->FileName + "-" + nBits.ToString() + "bits-" + nCount + "-" +  outp->FileName +  ".csv" ;
+          String^ s = sDir + "\\" + inp->Name + "-" + nBits.ToString() + "bits-" + nCount + "-" +  outp->Name +  ".csv" ;
 	        ofstream f(ctx.marshal_as<const char*>(s) , ios::out);
 
           // Check propogation of patterns.
@@ -178,32 +181,35 @@ void Synthesize(FileSrc::Output^ inp, Next^ NextIn, FileSrc::Output^ outp, Next^
       }
 #endif
       
-      COUT(
-
+      COUT_SUMMARY2(
         fs << "\n" << nCount ; 
-        fs << ","  << ctx.marshal_as<const char*>(outp->FileName);
+        fs << ","  << ctx.marshal_as<const char*>(outp->Name);
         fs << ", " << syn.GateCount();
         fs << ", " << (t2 - t1) ;
         fs << ", "   << freq;
         fs << ", "  << 1000000*(t2 - t1) / freq ;
+      );
 
+//      COUT_SUMMARY (
         if (syn.GateCount() <= nMin) { 
           nMin = syn.GateCount();
-          fss << "\n" << ctx.marshal_as<const char*>(inp->FileName); 
-          fss << "," << ctx.marshal_as<const char*>(outp->FileName) ;
-          fss << ", " << (t2 - t1) ;
-          fss << ", "  << 1000000*(t2 - t1) / freq ;
-          fss << "," << nMin;
+          oss = String::Format("\n{0},{1},{2},{3},{4}", inp->Name, outp->Name, t2-t1, 1000000*(t2 - t1) / freq, nMin);
         }
+//      );
     
       }
-    )
-    fss << "\n TotalTime (uSec):, " << ctx.marshal_as<const char*>((1000000*t3/freq).ToString()); 
-    fs.close();
+
+    
+    COUT_SUMMARY (fss << ctx.marshal_as<const char*>(oss));
+    COUT_SUMMARY (fss << "," << ctx.marshal_as<const char*>((1000000*t3/freq).ToString())); 
+    COUT_SUMMARY (fss.flush());
+    COUT_SUMMARY2 (fs.close());
   }
   
-  fss.close();
+  COUT_SUMMARY (fss.close());
 }
+
+#ifdef ARCHIVE
 void AllInputsPerFile()
 {
 	ULONGLONG t1, t2, freq;
@@ -480,3 +486,5 @@ void DoClrTest()
   IEnumerable<int>^ _list = %m;
   
 }
+
+#endif 

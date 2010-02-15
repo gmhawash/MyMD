@@ -17,6 +17,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CheckPattern", "CheckPatter
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CompareFiles", "CompareFiles\CompareFiles.vcproj", "{119A90F3-AD4B-46ED-BDDF-96DD6DB95FDA}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MMDSNSetup", "MMDSNSetup\MMDSNSetup.vdproj", "{68941075-5DBD-4EEA-A6BB-B3F70085B65C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TranslateFormat", "TranslateFormat\TranslateFormat.vcproj", "{2A6BC6A7-E824-4D49-A0C6-12E44D7905FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -58,6 +62,16 @@ Global
 		{119A90F3-AD4B-46ED-BDDF-96DD6DB95FDA}.Release|Win32.ActiveCfg = Release|Win32
 		{119A90F3-AD4B-46ED-BDDF-96DD6DB95FDA}.Release|Win32.Build.0 = Release|Win32
 		{119A90F3-AD4B-46ED-BDDF-96DD6DB95FDA}.Release|x64.ActiveCfg = Release|Win32
+		{68941075-5DBD-4EEA-A6BB-B3F70085B65C}.Debug|Win32.ActiveCfg = Debug
+		{68941075-5DBD-4EEA-A6BB-B3F70085B65C}.Debug|x64.ActiveCfg = Debug
+		{68941075-5DBD-4EEA-A6BB-B3F70085B65C}.Release|Win32.ActiveCfg = Release
+		{68941075-5DBD-4EEA-A6BB-B3F70085B65C}.Release|x64.ActiveCfg = Release
+		{2A6BC6A7-E824-4D49-A0C6-12E44D7905FC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2A6BC6A7-E824-4D49-A0C6-12E44D7905FC}.Debug|Win32.Build.0 = Debug|Win32
+		{2A6BC6A7-E824-4D49-A0C6-12E44D7905FC}.Debug|x64.ActiveCfg = Debug|Win32
+		{2A6BC6A7-E824-4D49-A0C6-12E44D7905FC}.Release|Win32.ActiveCfg = Release|Win32
+		{2A6BC6A7-E824-4D49-A0C6-12E44D7905FC}.Release|Win32.Build.0 = Release|Win32
+		{2A6BC6A7-E824-4D49-A0C6-12E44D7905FC}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
