@@ -31,6 +31,7 @@ namespace AlgoBucket {
   ///
   void Permutation::Set(ULONGLONG nBits, ULONGLONG nBase) 
   {
+    SeqName = "Permutation";
     this->m_nBase = nBase;
     m_nBits = nBits;
     m_nTerms = (ULONGLONG)Math::Pow(m_nBase,nBits);

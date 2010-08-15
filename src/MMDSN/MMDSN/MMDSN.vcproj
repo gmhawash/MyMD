@@ -120,7 +120,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="C:\mh\PSU\Quantum\MMD\src\MMDSN\Inputs"
+				AdditionalIncludeDirectories="$(SolutionDir)\AlgoBucket;C:\mh\PSU\Quantum\MMD\src\MMDSN\Inputs"
 				PreprocessorDefinitions="WIN64;_DEBUG;_CONSOLE"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -250,6 +250,7 @@
 			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
+			ManagedExtensions="1"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -272,6 +273,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="$(SolutionDir)\AlgoBucket;C:\mh\PSU\Quantum\MMD\src\MMDSN\Inputs"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"

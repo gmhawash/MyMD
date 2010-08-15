@@ -25,7 +25,8 @@ void GenerateRandomSeq();
 
 int main(array<System::String ^> ^args)
 {
-
+  GenerateRandomSeq();
+/*
   for (int nBits=4; nBits<20; nBits++) {
     // Create directory if it does not exist
     String^ sDir = "..\\" + nBits.ToString() + "-bits-src";
@@ -44,14 +45,14 @@ int main(array<System::String ^> ^args)
 #endif
   }
   
-
+*/
 }
 
 void GenerateRandomSeq()
 {
     marshal_context ctx;
 
-    for (int nBits=3; nBits<5; nBits++) {
+    for (int nBits=30; nBits < 33; nBits++) {
       Permutation outp(nBits);
       
       // Create directory if it does not exist
@@ -61,15 +62,15 @@ void GenerateRandomSeq()
 
       int nCount = 0;
 
-      for (int nCount=0; nCount < 10000; nCount++) {
+      for (int nCount=0; nCount < 1; nCount++) {
         String^ s = sDir + "\\Random" + "-" + nCount.ToString() +  ".txt" ;
         ofstream fs(ctx.marshal_as<const char*>(s) , ios::out);
         cout << ctx.marshal_as<const char*>(s) << "\r";
-                
-        List<ULONGLONG>^ ol = outp.Random();
         
+        List<ULONGLONG>^ ol = outp.Random();
+        fs << "rnd" << nBits;
         for (int i=0; i<ol->Count; i++)
-          fs << ol[i] << "\n";
+          fs << ol[i] << " ";
         
         nCount++;
       }

@@ -49,7 +49,7 @@ namespace AlgoBucket {
 	    void Set (ULONGLONG nBits, String^ FilePrefix, UINT nCount) {
 	     
         m_nCount = nCount;
-	      SeqName = FilePrefix;
+	      SeqName = FilePrefix->Replace('*', ' ')->TrimEnd();
 	      m_nSequence = 0;
 	      m_nBits = nBits;
         m_nTerms = (ULONGLONG)Math::Pow(2,nBits);

@@ -20,7 +20,6 @@ namespace AlgoBucket {
     List<ULONGLONG> m_inputList;
     List<ULONGLONG> m_outputList;
     
-    
     // TODO: EXTENSION NEEDED FOR MORE THAN 32 BITS.
     vector<UINT>* m_input;
     vector<UINT>::iterator* m_start;
@@ -28,8 +27,9 @@ namespace AlgoBucket {
  
 
   public: 
-    static String^ Name = "Permutation";
-
+    property String^ Name;
+    property String^ SeqName;
+    
     //property String^ Name;
     Permutation(ULONGLONG nBits);
     Permutation(ULONGLONG nBits, ULONGLONG nBase);
@@ -38,6 +38,7 @@ namespace AlgoBucket {
     List<ULONGLONG>^ Next(ULONGLONG nIndex);
     List<ULONGLONG>^ Random();
     ULONGLONG Count(){return m_nPermutations;}
+    virtual void Reset() {m_CurrentTerm = 0;}
 
   protected:
     void Branch(List<ULONGLONG>^ list, ULONGLONG term, ULONGLONG nBits);

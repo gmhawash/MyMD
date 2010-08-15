@@ -7,6 +7,7 @@ using namespace System;
 using namespace System::Collections::Generic;
 using namespace std;
 using namespace System::Runtime::InteropServices;
+using namespace System::IO;
 
 namespace AlgoBucket {
   namespace Nouraddin {
@@ -17,10 +18,10 @@ namespace AlgoBucket {
 	    array<int>^ m_permList;
 	    array<vector<ULONGLONG> *>^ m_inArray;
 	    public:
-	    
+  	    
 	      Input (ULONGLONG nBits) : Permutation(nBits)
 	      {
-	        Name = "Nouraddin";
+	        SeqName = "Nouraddin";
           m_inArray = gcnew array<vector<ULONGLONG>*>(nBits+1);
           m_inArray[0] = new vector<ULONGLONG>(1, 0);
           MakeList(nBits,1);
@@ -31,26 +32,6 @@ namespace AlgoBucket {
             m_nPermutations *= a->size();
    	    }
    	    
-   	    //void GenerateList()
-   	    //{
-   	    //  m_CurrentTerm = 0;
-   	    //  NextPermutation(0, m_Permutations
-   	    //}
-
-        //void NextPermutation(vector<ULONGLONG>* vCur, ULONGLONG listIndex)
-        //{
-        //  vector<ULONGLONG>* l=m_inArray[listIndex];
-        //  
-        //  for (i=0; i< l->size(); i++) {
-        //    vector<ULONGLONG>::iterator start, end;
-		      //  start = l->begin() ;   // location of first element of Numbers
-        //    end = l->end() ;       // one past the location last element of Numbers
-        //    next_permutation(start, end);
-        //  }
-        //    
-        //  ULONGLONG nSize = v->size();
-        //  NextPermutation(index % nSize, index / nSize, 
-        //}
         
         /// void MakeList(ULONGLONG nBits, ULONGLONG nIndex)/// 
         ///
@@ -66,9 +47,6 @@ namespace AlgoBucket {
           m_inArray[nIndex] = new vector<ULONGLONG>(Combination(nBits, nIndex));
           vector<ULONGLONG>* last = m_inArray[nIndex-1];
           
-	        //m_inputArray->Add(gcnew array<UInt64>(Combination(nBits, nIndex)));
-          // array<UInt64>^ last = m_inputArray[nIndex-1];
-                    
           int k=0;
           
           for (int i=0; i< last->size(); i++) {
@@ -149,6 +127,24 @@ namespace AlgoBucket {
             for (int j=0; j < m_inArray[i]->size(); j++)
               list.Add(m_inArray[i]->at(j));
           }          
+          return %list;
+        }
+  
+
+      List<ULONGLONG>^ Input::Random()
+        {
+          // Select which band to shuffle randomly..
+          System::Random rnd;
+          int x = rnd.Next(m_inArray->Length);
+          
+          random_shuffle(m_inArray[x]->begin(), m_inArray[x]->end());
+
+          // Copy list back
+          List<ULONGLONG> list;
+          for (int i = 0; i < m_inArray->Length; i++) 
+          for (int j=0; j < m_inArray[i]->size(); j++)
+            list.Add(m_inArray[i]->at(j));
+
           return %list;
         }
   

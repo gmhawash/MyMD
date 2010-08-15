@@ -3,4 +3,6 @@
 */*.suo
 */*.ncb
 *Debug/*
+*Release/*
 *Debug*
+*Release*

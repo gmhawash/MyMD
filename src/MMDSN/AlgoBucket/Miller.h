@@ -18,8 +18,14 @@ namespace AlgoBucket {
 	      Input (ULONGLONG nBits) : Permutation (nBits) {
           Name = "Miller";
 	        m_called  = false;
+	        m_nPermutations = 1;
 	      }
         
+      virtual void Reset() override
+      {
+        m_called = false;
+      }
+      
 	    /// List<ULONGLONG>^ Permutation::Next()/// 
       ///
       /// Inputs:
