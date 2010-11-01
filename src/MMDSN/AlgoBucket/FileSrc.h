@@ -50,7 +50,7 @@ namespace AlgoBucket {
 	     
         m_nCount = nCount;
 	      SeqName = FilePrefix->Replace('*', ' ')->TrimEnd();
-	      m_nSequence = 0;
+        m_nSequence = 0;
 	      m_nBits = nBits;
         m_nTerms = (ULONGLONG)Math::Pow(2,nBits);
         
@@ -99,7 +99,7 @@ retry:
               goto retry;
             }
             
-            Name = gcnew String(x);
+            Name = SeqName + "-" + gcnew String(x);
             int num;
             for (int i=0; i<m_nTerms; i++) {        
               *m_fsCurrent >> num;

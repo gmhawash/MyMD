@@ -1,25 +1,21 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MMDSN", "MMDSN\MMDSN.vcproj", "{27B40903-1C05-4629-BEB6-0E36CD0E81C6}"
-	ProjectSection(ProjectDependencies) = postProject
-		{F6E7D479-F13F-493D-BE9B-ADEBB04DC5C0} = {F6E7D479-F13F-493D-BE9B-ADEBB04DC5C0}
-	EndProjectSection
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MMDSN", "MMDSN\MMDSN.vcxproj", "{27B40903-1C05-4629-BEB6-0E36CD0E81C6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Inputs", "Inputs\Inputs.vcproj", "{F6E7D479-F13F-493D-BE9B-ADEBB04DC5C0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Inputs", "Inputs\Inputs.vcxproj", "{F6E7D479-F13F-493D-BE9B-ADEBB04DC5C0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AlgoBucket", "AlgoBucket\AlgoBucket.vcproj", "{BFAFB90B-3F1C-4BDC-AD89-57F1C8B481B0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AlgoBucket", "AlgoBucket\AlgoBucket.vcxproj", "{BFAFB90B-3F1C-4BDC-AD89-57F1C8B481B0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CheckPattern", "CheckPattern\CheckPattern.vcproj", "{D0C084FC-8D1C-4C07-8BF3-F274C4819587}"
-	ProjectSection(ProjectDependencies) = postProject
-		{BFAFB90B-3F1C-4BDC-AD89-57F1C8B481B0} = {BFAFB90B-3F1C-4BDC-AD89-57F1C8B481B0}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CheckPattern", "CheckPattern\CheckPattern.vcxproj", "{D0C084FC-8D1C-4C07-8BF3-F274C4819587}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CompareFiles", "CompareFiles\CompareFiles.vcproj", "{119A90F3-AD4B-46ED-BDDF-96DD6DB95FDA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CompareFiles", "CompareFiles\CompareFiles.vcxproj", "{119A90F3-AD4B-46ED-BDDF-96DD6DB95FDA}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MMDSNSetup", "MMDSNSetup\MMDSNSetup.vdproj", "{68941075-5DBD-4EEA-A6BB-B3F70085B65C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TranslateFormat", "TranslateFormat\TranslateFormat.vcproj", "{2A6BC6A7-E824-4D49-A0C6-12E44D7905FC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TranslateFormat", "TranslateFormat\TranslateFormat.vcxproj", "{2A6BC6A7-E824-4D49-A0C6-12E44D7905FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4BCB4F7A-FB3A-4458-9E97-ECAFE36A7000}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

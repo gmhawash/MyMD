@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="MMDSN">
+</Property><Property Name="Solution File" Value="C:\src\MMD\src\MMDSN\MMDSN.sln">
+</Property><Property Name="Date" Value="Wednesday, October 13, 2010">
+</Property><Property Name="Time" Value="6:23 AM">
+</Property></Properties><Event ErrorLevel="0" Project="MMDSN" Source="MMDSN\MMDSN.vcproj" Description="Converting project file 'C:\src\MMD\src\MMDSN\MMDSN\MMDSN.vcproj'.">
+</Event><Event ErrorLevel="1" Project="MMDSN" Source="MMDSN\MMDSN.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="MMDSN" Source="MMDSN\MMDSN.vcproj" Description="Attribute 'CopyLocalDependencies' of 'ProjectReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="MMDSN" Source="MMDSN\MMDSN.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'ProjectReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="0" Project="MMDSN" Source="MMDSN\MMDSN.vcproj" Description="Done converting to new project file 'C:\src\MMD\src\MMDSN\MMDSN\MMDSN.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="MMDSN" Source="MMDSN\MMDSN.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="Converting project file 'C:\src\MMD\src\MMDSN\Inputs\Inputs.vcproj'.">
+</Event><Event ErrorLevel="1" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="Attribute 'CopyLocalDependencies' of 'ProjectReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'ProjectReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="0" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="Done converting to new project file 'C:\src\MMD\src\MMDSN\Inputs\Inputs.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="Inputs" Source="Inputs\Inputs.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="AlgoBucket" Source="AlgoBucket\AlgoBucket.vcproj" Description="Converting project file 'C:\src\MMD\src\MMDSN\AlgoBucket\AlgoBucket.vcproj'.">
+</Event><Event ErrorLevel="1" Project="AlgoBucket" Source="AlgoBucket\AlgoBucket.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="AlgoBucket" Source="AlgoBucket\AlgoBucket.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="AlgoBucket" Source="AlgoBucket\AlgoBucket.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="AlgoBucket" Source="AlgoBucket\AlgoBucket.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="AlgoBucket" Source="AlgoBucket\AlgoBucket.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="AlgoBucket" Source="AlgoBucket\AlgoBucket.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="AlgoBucket" Source="AlgoBucket\AlgoBucket.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="0" Project="AlgoBucket" Source="AlgoBucket\AlgoBucket.vcproj" Description="Done converting to new project file 'C:\src\MMD\src\MMDSN\AlgoBucket\AlgoBucket.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="AlgoBucket" Source="AlgoBucket\AlgoBucket.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CheckPattern" Source="CheckPattern\CheckPattern.vcproj" Description="Converting project file 'C:\src\MMD\src\MMDSN\CheckPattern\CheckPattern.vcproj'.">
+</Event><Event ErrorLevel="1" Project="CheckPattern" Source="CheckPattern\CheckPattern.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="CheckPattern" Source="CheckPattern\CheckPattern.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="CheckPattern" Source="CheckPattern\CheckPattern.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="CheckPattern" Source="CheckPattern\CheckPattern.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="CheckPattern" Source="CheckPattern\CheckPattern.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="CheckPattern" Source="CheckPattern\CheckPattern.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="CheckPattern" Source="CheckPattern\CheckPattern.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="CheckPattern" Source="CheckPattern\CheckPattern.vcproj" Description="Attribute 'CopyLocalDependencies' of 'ProjectReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="CheckPattern" Source="CheckPattern\CheckPattern.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'ProjectReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="0" Project="CheckPattern" Source="CheckPattern\CheckPattern.vcproj" Description="Done converting to new project file 'C:\src\MMD\src\MMDSN\CheckPattern\CheckPattern.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="CheckPattern" Source="CheckPattern\CheckPattern.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CompareFiles" Source="CompareFiles\CompareFiles.vcproj" Description="Converting project file 'C:\src\MMD\src\MMDSN\CompareFiles\CompareFiles.vcproj'.">
+</Event><Event ErrorLevel="1" Project="CompareFiles" Source="CompareFiles\CompareFiles.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="CompareFiles" Source="CompareFiles\CompareFiles.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="CompareFiles" Source="CompareFiles\CompareFiles.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="CompareFiles" Source="CompareFiles\CompareFiles.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="CompareFiles" Source="CompareFiles\CompareFiles.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="CompareFiles" Source="CompareFiles\CompareFiles.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="CompareFiles" Source="CompareFiles\CompareFiles.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="CompareFiles" Source="CompareFiles\CompareFiles.vcproj" Description="Attribute 'CopyLocalDependencies' of 'ProjectReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="CompareFiles" Source="CompareFiles\CompareFiles.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'ProjectReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="0" Project="CompareFiles" Source="CompareFiles\CompareFiles.vcproj" Description="Done converting to new project file 'C:\src\MMD\src\MMDSN\CompareFiles\CompareFiles.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="CompareFiles" Source="CompareFiles\CompareFiles.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="TranslateFormat" Source="TranslateFormat\TranslateFormat.vcproj" Description="Converting project file 'C:\src\MMD\src\MMDSN\TranslateFormat\TranslateFormat.vcproj'.">
+</Event><Event ErrorLevel="1" Project="TranslateFormat" Source="TranslateFormat\TranslateFormat.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="TranslateFormat" Source="TranslateFormat\TranslateFormat.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="TranslateFormat" Source="TranslateFormat\TranslateFormat.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="TranslateFormat" Source="TranslateFormat\TranslateFormat.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="TranslateFormat" Source="TranslateFormat\TranslateFormat.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="TranslateFormat" Source="TranslateFormat\TranslateFormat.vcproj" Description="Attribute 'CopyLocalDependencies' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="TranslateFormat" Source="TranslateFormat\TranslateFormat.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'AssemblyReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="TranslateFormat" Source="TranslateFormat\TranslateFormat.vcproj" Description="Attribute 'CopyLocalDependencies' of 'ProjectReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="TranslateFormat" Source="TranslateFormat\TranslateFormat.vcproj" Description="Attribute 'UseDependenciesInBuild' of 'ProjectReference' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="0" Project="TranslateFormat" Source="TranslateFormat\TranslateFormat.vcproj" Description="Done converting to new project file 'C:\src\MMD\src\MMDSN\TranslateFormat\TranslateFormat.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="TranslateFormat" Source="TranslateFormat\TranslateFormat.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="MMDSN.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="MMDSN.sln" Description="Converted">
+</Event></UpgradeLog>

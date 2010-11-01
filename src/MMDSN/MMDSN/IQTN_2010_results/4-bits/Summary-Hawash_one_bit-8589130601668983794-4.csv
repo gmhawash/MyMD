@@ -1,0 +1,9 @@
+Hawash_one_bit: function
+Input, Output, Ticks, Time, Min Gates, Total Time, Quantum Cost
+
+Hawash_one_bit,function-0,27,9,13,13,72814
+Hawash_one_bit,function-1,27,9,39,39,74193
+Hawash_one_bit,function-2,27,9,70,70,78339
+Hawash_one_bit,function-3,28,10,86,86,76969
+Hawash_one_bit,function-4,32,11,27,27,82464
+Hawash_one_bit,function-hbw4d3,51,18,83,83,66148

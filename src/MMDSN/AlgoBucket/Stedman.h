@@ -11,22 +11,22 @@ namespace AlgoBucket {
   namespace Stedman {
     /// public ref class Input : Permutation {///     
     ///
-	  public ref class Input : Permutation {
-	    public:
-	      Input (ULONGLONG nBits) : Permutation (nBits) 
-	      {
-	        Name = "Stedman";
-	        // remove first and last from input list (00..0, 11...1).
-	        m_inputList.RemoveAt(0);
-	        m_inputList.RemoveAt(m_inputList.Count-1);
+    public ref class Input : Permutation {
+      public:
+        Input (ULONGLONG nBits) : Permutation (nBits) 
+        {
+          Name = "Stedman";
+          // remove first and last from input list (00..0, 11...1).
+          m_inputList.RemoveAt(0);
+          m_inputList.RemoveAt(m_inputList.Count-1);
           m_nTerms -= 2;
           
           m_nPermutations = Factorial(m_nTerms);
           if (nBits > 4)
             m_nPermutations = -1LL ;
-   	    }
-	     
-	      /// List<ULONGLONG>^ Permutation::Next()/// 
+        }
+       
+        /// List<ULONGLONG>^ Permutation::Next()/// 
         ///
         /// Inputs:
         ///
@@ -123,14 +123,14 @@ namespace AlgoBucket {
             
           return true;
         }
-	  };
-	
-	  public ref class Output : Permutation {
-	    public:
-	      Output (ULONGLONG nBits) : Permutation (nBits) {
-	        
-	     }
-	    /// List<ULONGLONG>^ Permutation::Next()/// 
+    };
+  
+    public ref class Output : Permutation {
+      public:
+        Output (ULONGLONG nBits) : Permutation (nBits) {
+          
+       }
+      /// List<ULONGLONG>^ Permutation::Next()/// 
       ///
       /// Inputs:
       ///
@@ -140,6 +140,6 @@ namespace AlgoBucket {
       {
         return Permutation::Random();
       }	     
-	  };
+    };
 }
 }

@@ -7,4 +7,6 @@
 #include "stedman.h"
 #include "Nouraddin.h"
 #include "FileSrc.h"
+#include "Hawash_one_bit.h"
+#include "Hawash_two_bit.h"
 

@@ -1,0 +1,9 @@
+Permutation: function
+Input, Output, Ticks, Time, Min Gates, Total Time, Quantum Cost
+
+Miller,function-0,5692,2086,13,13,2086
+Miller,function-0,5692,2086,13,13,0
+Miller,function-2,68,24,70,70,24
+Miller,function-2,68,24,70,70,0
+Miller,function-4,56,20,47,47,20
+Miller,function-4,56,20,47,47,0
