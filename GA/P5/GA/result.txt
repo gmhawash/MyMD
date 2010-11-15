@@ -1,0 +1,202 @@
+Current Minimum: 158 Combo: 1,099,437,899,776
+Current Minimum: 158 Combo: 1,090,915,074,048
+Current Minimum: 157 Combo: 824,627,101,696
+Current Minimum: 155 Combo: 824,593,809,408
+Current Minimum: 155 Combo: 824,560,254,976
+Current Minimum: 155 Combo: 822,479,880,192
+Current Minimum: 155 Combo: 824,593,711,104
+Current Minimum: 155 Combo: 927,710,019,584
+Current Minimum: 154 Combo: 412,313,944,064
+Current Minimum: 154 Combo: 1,097,290,448,896
+Current Minimum: 153 Combo: 824,560,025,600
+Current Minimum: 153 Combo: 755,841,859,584
+Current Minimum: 153 Combo: 1,097,273,933,824
+Current Minimum: 153 Combo: 824,526,733,312
+Current Minimum: 153 Combo: 822,446,358,528
+Current Minimum: 151 Combo: 822,412,804,096
+Current Minimum: 151 Combo: 822,398,124,032
+Current Minimum: 151 Combo: 343,594,483,712
+Current Minimum: 151 Combo: 342,521,004,032
+Current Minimum: 150 Combo: 309,235,007,488
+Current Minimum: 150 Combo: 755,557,711,872
+Current Minimum: 150 Combo: 753,678,663,680
+Current Minimum: 150 Combo: 755,557,703,680
+Current Minimum: 150 Combo: 813,808,197,632
+Current Minimum: 150 Combo: 753,678,655,488
+Current Minimum: 150 Combo: 1,021,845,659,648
+Current Minimum: 149 Combo: 755,557,687,296
+Current Minimum: 149 Combo: 1,029,361,819,648
+Current Minimum: 147 Combo: 1,021,845,626,880
+Current Minimum: 147 Combo: 755,524,165,632
+Current Minimum: 147 Combo: 753,410,236,416
+Current Minimum: 147 Combo: 746,967,785,472
+Current Minimum: 147 Combo: 813,808,193,536
+Current Minimum: 147 Combo: 1,088,417,419,264
+Current Minimum: 147 Combo: 303,868,399,616
+Current Minimum: 147 Combo: 1,084,122,714,112
+Current Minimum: 147 Combo: 1,019,698,204,672
+Current Minimum: 146 Combo: 813,539,774,464
+Current Minimum: 146 Combo: 753,410,232,320
+Current Minimum: 146 Combo: 813,808,168,960
+Current Minimum: 146 Combo: 813,807,939,584
+Current Minimum: 146 Combo: 813,774,647,296
+Current Minimum: 146 Combo: 813,673,984,000
+Current Minimum: 144 Combo: 813,539,766,272
+Current Minimum: 143 Combo: 813,539,749,888
+Current Minimum: 143 Combo: 746,967,756,800
+Current Minimum: 143 Combo: 813,506,228,224
+Current Minimum: 143 Combo: 746,934,235,136
+Current Minimum: 141 Combo: 744,820,305,920
+Current Minimum: 141 Combo: 746,967,721,984
+Current Minimum: 140 Combo: 813,808,162,816
+Current Minimum: 140 Combo: 813,807,933,440
+Current Minimum: 140 Combo: 813,673,977,856
+Current Minimum: 140 Combo: 813,539,760,128
+Current Minimum: 140 Combo: 745,088,718,848
+Current Minimum: 139 Combo: 744,820,299,776
+Current Minimum: 139 Combo: 813,673,953,280
+Current Minimum: 139 Combo: 813,539,735,552
+Current Minimum: 139 Combo: 746,967,742,464
+Current Minimum: 139 Combo: 745,088,694,272
+Current Minimum: 139 Combo: 813,405,550,592
+Current Minimum: 139 Combo: 746,833,557,504
+Current Minimum: 139 Combo: 744,954,509,312
+Current Minimum: 137 Combo: 744,820,291,584
+Current Minimum: 137 Combo: 746,967,693,312
+Current Minimum: 136 Combo: 744,820,275,200
+Current Minimum: 136 Combo: 729,787,889,664
+Current Minimum: 136 Combo: 796,494,084,608
+Current Minimum: 136 Combo: 798,373,083,648
+Current Minimum: 136 Combo: 729,787,824,640
+Current Minimum: 136 Combo: 729,653,639,680
+Current Minimum: 136 Combo: 813,688,364,544
+Current Minimum: 136 Combo: 744,961,818,112
+Current Minimum: 136 Combo: 813,397,130,752
+Current Minimum: 136 Combo: 710,603,128,320
+Current Minimum: 135 Combo: 796,225,650,176
+Current Minimum: 135 Combo: 710,602,112,512
+Current Minimum: 135 Combo: 798,373,083,392
+Current Minimum: 135 Combo: 746,833,475,840
+Current Minimum: 135 Combo: 738,243,541,248
+Current Minimum: 135 Combo: 745,893,951,744
+Current Minimum: 135 Combo: 737,304,017,152
+Current Minimum: 135 Combo: 744,820,209,920
+Current Minimum: 133 Combo: 729,787,824,384
+Current Minimum: 133 Combo: 729,720,715,520
+Current Minimum: 133 Combo: 695,428,151,552
+Current Minimum: 133 Combo: 729,653,639,424
+Current Minimum: 133 Combo: 729,786,776,320
+Current Minimum: 132 Combo: 796,225,600,256
+Current Minimum: 130 Combo: 729,653,607,168
+Current Minimum: 130 Combo: 729,786,775,936
+Current Minimum: 129 Combo: 729,653,606,784
+Current Minimum: 128 Combo: 695,428,086,144
+Current Minimum: 127 Combo: 729,652,558,720
+Current Minimum: 127 Combo: 695,293,868,928
+Current Minimum: 127 Combo: 32,133,844,872
+Current Minimum: 127 Combo: 410,665,452,664
+Current Minimum: 127 Combo: 376,842,585,208
+Current Minimum: 127 Combo: 1,067,378,864,244
+Current Minimum: 127 Combo: 938,529,845,364
+Current Minimum: 127 Combo: 930,074,128,500
+Current Minimum: 127 Combo: 388,908,249,204
+Current Minimum: 126 Combo: 1,087,736,690,292
+Current Minimum: 126 Combo: 411,596,588,156
+Current Minimum: 126 Combo: 377,773,720,700
+Current Minimum: 126 Combo: 410,657,064,060
+Current Minimum: 125 Combo: 410,527,040,636
+Current Minimum: 125 Combo: 727,505,075,074
+Current Minimum: 125 Combo: 723,344,325,506
+Current Minimum: 125 Combo: 376,167,302,269
+Current Minimum: 125 Combo: 372,006,552,701
+Current Minimum: 125 Combo: 688,984,587,139
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
