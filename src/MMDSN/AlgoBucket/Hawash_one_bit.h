@@ -30,7 +30,7 @@ namespace AlgoBucket {
 			{
 
 				Name = "Hawash_one_bit";
-        SeqName = Name;
+				SeqName = Name;
 				STRINGVECTOR theVector, anotherVector, permutationVector;
 				theVector= generateTwoBitsVector();
 				anotherVector = generateTwoBitsVector();

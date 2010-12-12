@@ -26,14 +26,14 @@ int main(array<System::String ^> ^args)
       
       // Check propogation of patterns.
       for(int i=0; i < il->Count; i++) {
-        ULONGLONG out = syn.Propogate(il[i], ol[i]);
-        if (out != il[i]) {
-          cout << "Failed " << "\n";
-          for(int j=0; j < il->Count; j++) {
-            cout << "[" << il[j] << "," << ol[j] << "]\n";
-          }
-          break;
-          }
+        //ULONGLONG out = syn.Propogate(il[i], ol[i]);
+        //if (out != il[i]) {
+        //  cout << "Failed " << "\n";
+         // for(int j=0; j < il->Count; j++) {
+         //   cout << "[" << il[j] << "," << ol[j] << "]\n";
+         // }
+         // break;
+         // }
       }
     }
     

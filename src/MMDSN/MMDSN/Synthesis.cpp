@@ -49,7 +49,8 @@ void SynthesizeFromFile( FileSrc::Input^ inp, Next^ fnIn, FileSrc::Input^ outp, 
 //#define LARGE_FUNCTION
 //#define NOURADDIN 
 //#define HAWASH_1Bit
-#define HAWASH_2Bit
+//#define HAWASH_2Bit
+#define BAKER
 //#define MILLER 
 //#define FILE_FILE
 
@@ -127,6 +128,12 @@ int main(array<System::String ^> ^args)
 		Hawash_two_bit::Input inp(nBits);
 		FileSrc::Input  outp(nBits, SEQUENCE, 50);
 		SynthesizeFromFunction(%inp, gcnew Next(%inp, &Hawash_two_bit::Input::Random),  %outp, gcnew Next(%outp, &FileSrc::Input::Next));
+	}
+#elif defined(BAKER)
+	for (nBits=5; nBits<= NBITS; nBits++) {
+		Baker_per::Input inp(nBits);
+		FileSrc::Input  outp(nBits, SEQUENCE, 50);
+		SynthesizeFromFunction(%inp, gcnew Next(%inp, &Baker_per::Input::Next),  %outp, gcnew Next(%outp, &FileSrc::Input::Next));
 	}
 #elif defined(HAWASH_1Bit)
 	for (nBits=4; nBits<= NBITS; nBits++) {
