@@ -14,6 +14,8 @@
 #include <vector>
 #include <algorithm>
 #include <functional>
+#include "Population.h"
+#include "CPermutation.h"
 
 using namespace AlgoBucket;
 using namespace std;
@@ -49,7 +51,8 @@ void SynthesizeFromFile( FileSrc::Input^ inp, Next^ fnIn, FileSrc::Input^ outp, 
 //#define LARGE_FUNCTION
 //#define NOURADDIN 
 //#define HAWASH_1Bit
-#define HAWASH_2Bit
+//#define HAWASH_2Bit
+#define HAWASH_GA
 //#define MILLER 
 //#define FILE_FILE
 
@@ -134,6 +137,24 @@ int main(array<System::String ^> ^args)
 		FileSrc::Input  outp(nBits, SEQUENCE, 50);
 		SynthesizeFromFunction(%inp, gcnew Next(%inp, &Hawash_one_bit::Input::Random),  %outp, gcnew Next(%outp, &FileSrc::Input::Next));
 	}
+#elif defined(HAWASH_GA)
+	nBits = 4;
+	CPermutation ^per = gcnew CPermutation(nBits);
+	per->openFile(nBits,"function*");
+	for(int j=0;j<20;j++)
+	{
+		per->next();
+		//per->print();
+		per->printList();
+		cout << endl;
+		for(int i=0; i < per->in_list.Count; i++) 
+		{
+			per->process(per->in_list[i], per->out_list[per->in_list[i]]); 
+		}
+		per->fitness[j] = per->QuantumCost();
+		cout << per->QuantumCost()<<endl;
+	}
+
 #elif  defined(MILLER)
 	for (nBits=4; nBits<= NBITS; nBits++) {
 		Miller::Input inp(nBits);
