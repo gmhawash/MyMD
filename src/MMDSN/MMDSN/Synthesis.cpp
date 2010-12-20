@@ -141,19 +141,25 @@ int main(array<System::String ^> ^args)
 	nBits = 4;
 	CPermutation ^per = gcnew CPermutation(nBits);
 	per->openFile(nBits,"function*");
-	for(int j=0;j<20;j++)
+	while(per->nextOut())
 	{
-		per->next();
-		//per->print();
-		per->printList();
-		cout << endl;
-		for(int i=0; i < per->in_list.Count; i++) 
+		per->resetPosition();
+		for(int j=0;j<10;j++)
 		{
-			per->process(per->in_list[i], per->out_list[per->in_list[i]]); 
+			per->next();
+			//per->print();
+			per->printList();
+			cout << endl;
+			for(int i=0; i < per->in_list.Count; i++) 
+			{
+				per->process(per->in_list[i], per->out_list[per->in_list[i]]); 
+			}
+			per->fitness[j] = per->QuantumCost();
+			cout << per->QuantumCost()<<endl;
 		}
-		per->fitness[j] = per->QuantumCost();
-		cout << per->QuantumCost()<<endl;
 	}
+
+	per->crossOver(per->getHasse(5), per->getHasse(6));
 
 #elif  defined(MILLER)
 	for (nBits=4; nBits<= NBITS; nBits++) {
@@ -403,6 +409,7 @@ void SynthesizeFromFile(FileSrc::Input^ inp, Next^ NextIn, FileSrc::Input^ outp,
 					f << "\nQuantum Cost," << syn.QuantumCost() << ",";
 					
 					for (ULONGLONG i=0; i<syn.GateCount(); i++) {
+
 						f <<  syn.GateCost(i) << ",";
 					}
 					

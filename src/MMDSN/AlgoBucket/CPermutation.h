@@ -2,6 +2,8 @@
 #include <time.h>
 
 typedef vector<string, allocator<string> > STRINGVECTOR;
+typedef vector<ULONGLONG, allocator<ULONGLONG> > ULONGVector;
+
 
 namespace AlgoBucket {
 	public ref class CPermutation
@@ -12,11 +14,15 @@ namespace AlgoBucket {
 		ULONGLONG Bits;
 		ULONGLONG requestedBits;
 		array<vector<ULONGLONG> *>^ m_inArray;
+		array<vector<ULONGLONG> *>^ m_outArray;
 		
 		array<ULONGLONG>^ m ;
 		array<ULONGLONG>^ c ;
 		ULONGLONG nGate;
-		
+		int numberOfHasse;
+		int in_position;
+		int out_position;
+		int numberOfBands;
 		
 
 	public:
@@ -41,7 +47,11 @@ namespace AlgoBucket {
 		ULONGLONG GateCost(int i);
 		ULONGLONG ControlLines(ULONGLONG n);
 		void next();
+		bool nextOut();
 		void printList();
+		void resetPosition();
+		ULONGVector *getHasse(int);
+		void crossOver(ULONGVector Hasse1[], ULONGVector Hasse2[]);
 
 		//int CalcFitness()
 		//{
@@ -53,10 +63,12 @@ namespace AlgoBucket {
 
 CPermutation::CPermutation(ULONGLONG nBits)
 {
-	
-	fitness = gcnew array<int>(20);
+	numberOfHasse = 10;
+	in_position = 0;
+	out_position = 0;
+	fitness = gcnew array<int>(numberOfHasse);
 	nGate = 0;
-	requestedBits = 0;
+	requestedBits = 1;
 	STRINGVECTOR theVector;
 	this->nBits =nBits;
 	Bits = nBits-requestedBits;
@@ -64,28 +76,37 @@ CPermutation::CPermutation(ULONGLONG nBits)
 	STRINGVECTOR *arrayOfVectors = new STRINGVECTOR[Bits + 1];
 	arrayOfVectors = generateCube(theVector, Bits);
 
-	Cubes = new STRINGVECTOR[power(requestedBits) * (Bits+1)];
+	numberOfBands = power(requestedBits) * (Bits+1);
+	Cubes = new STRINGVECTOR[numberOfBands];
 	Cubes = duplicateVector(arrayOfVectors, requestedBits, Bits);
 	if(requestedBits>0) Cubes = insertZeroAndOne(Cubes, requestedBits, Bits);
-	m_inArray = gcnew array<vector<ULONGLONG>*>(power(requestedBits)*(Bits+1)); // array of pointers to vector (+1 means 1 more band hasse diagram)
+	m_inArray = gcnew array<vector<ULONGLONG>*>(numberOfBands*numberOfHasse); // array of pointers to vector (+1 means 1 more band hasse diagram)
 
-	for(int i=0;i<power(requestedBits)*(Bits+1);i++)
+	int counter = 0;
+	for(int k=0;k<numberOfHasse;k++)
 	{
-		m_inArray[i] = new vector<ULONGLONG>(Cubes[i].size());
-			for(int j=0;j<Cubes[i].size();j++)
-			{
-				m_inArray[i]->at(j)=convertToDecimal(Cubes[i].at(j));
-				in_list.Add(m_inArray[i]->at(j));
-			}
+		Cubes = generatePermutation(Cubes,numberOfBands);
+		for(int i=0;i<numberOfBands;i++)
+		{
+			m_inArray[counter] = new vector<ULONGLONG>(Cubes[i].size());
+				for(int j=0;j<Cubes[i].size();j++)
+					m_inArray[counter]->at(j)=convertToDecimal(Cubes[i].at(j));
+			counter++;
+		}
 	}
 
+	for(int i=0;i<power(nBits);i++)
+	{
+		in_list.Add(0);
+		out_list.Add(0);
+	}
 	m = gcnew array<ULONGLONG>(Bits*1024);
 	c = gcnew array<ULONGLONG>(Bits*1024);
 }
 
 STRINGVECTOR* CPermutation::duplicateVector(STRINGVECTOR arrayOfVectors[], int requestedBits, int bits)
 	{
-		STRINGVECTOR* Cube = new STRINGVECTOR[power(requestedBits)*(bits+1)];
+		STRINGVECTOR* Cube = new STRINGVECTOR[numberOfBands];
 		int counter = 0;
 		for(int j=0;j<power(requestedBits);j++)
 		for(int i=0;i<bits+1;i++)
@@ -169,7 +190,7 @@ STRINGVECTOR * CPermutation::generatePermutation(STRINGVECTOR cubes[], int seque
 		do
 			r = rand() % (sequences);
 		while(cubes[r].size()==1);
-			next_permutation(cubes[r].begin(), cubes[r].end());
+			random_shuffle(cubes[r].begin(), cubes[r].end());
 		return cubes;
 	}
 void CPermutation::openFile(ULONGLONG nBits, String^ FilePrefix)
@@ -193,17 +214,26 @@ void CPermutation::openFile(ULONGLONG nBits, String^ FilePrefix)
         fs = new ifstream (ctx.marshal_as<const char*>(s) , ios::in);
         
         
+		m_outArray = gcnew array<vector<ULONGLONG>*>(10);
         char x[100];
-		*fs >> x ;
+		int counter=0;
           while(!(fs->eof()))  
           {
-			*fs >> x ;
-			out_list.Add(atoi(x));
+			  *fs >> x ;
+			  m_outArray[counter] = new vector<ULONGLONG>;
+			  for(int i=0;i<power(nBits);i++)
+			  {
+				*fs >> x ;
+				if(strlen(x)!=0) m_outArray[counter]->push_back(atoi(x));
+				//out_list.Add(atoi(x));
+			  }
+			  counter++;
 		  }
+		  fs->close();
 	}
 void CPermutation::print()
 	{
-		for(int i=0;i<power(requestedBits)*(Bits+1);i++)
+		for(int i=0;i<power(requestedBits)*(Bits+1)*numberOfHasse;i++)
 			{
 				for(int j=0;j<m_inArray[i]->size();j++)
 					cout << m_inArray[i]->at(j) << "  ";
@@ -282,28 +312,64 @@ ULONGLONG CPermutation::ControlLines(ULONGLONG n)
 	}
 void CPermutation::next()
 	{
-		srand ( time(NULL) );
-		int r;
-		do
-			r = rand() % (power(requestedBits) * (Bits+1));
-		while(m_inArray[r]->size()==1);
-			random_shuffle(m_inArray[r]->begin(), m_inArray[r]->end());
-
 		int someCounter = 0;
-		for(int i=0;i<power(requestedBits)*(Bits+1);i++)
+		for(int i=in_position * numberOfBands;i<in_position * numberOfBands+numberOfBands;i++)
 		{
 				for(int j=0;j<m_inArray[i]->size();j++)
 				{
 					in_list[someCounter++]=m_inArray[i]->at(j);
 				}
 		}
+		in_position++;
 	}
 	
+bool CPermutation::nextOut()
+{
+	if(m_outArray[out_position]->size())
+	{
+		for(int i=0;i<m_outArray[out_position]->size();i++)
+			out_list[i]=m_outArray[out_position]->at(i);
+		out_position++;
+		return true;
+	}
+	return false;
+}
 void CPermutation::printList()
 	{
 		for(int i=0;i<power(nBits);i++)
 			cout << in_list[i]<< "  ";
 	}
+void CPermutation::resetPosition()
+{
+	in_position = 0;
+}
+ULONGVector * CPermutation::getHasse(int pos)
+{
+	pos--;
+	ULONGVector* Hasse = new ULONGVector[numberOfBands];
+	int counter=0;
+	for(int i=pos * numberOfBands; i< pos * numberOfBands + numberOfBands; i++)
+	{
+		for(int j=0;j<m_inArray[i]->size();j++)
+		{
+			Hasse[counter].push_back(m_inArray[i]->at(j));
+		}
+		counter++;
+	}
+	return Hasse;
+}
+void CPermutation::crossOver(ULONGVector Hasse1[], ULONGVector Hasse2[])
+{
+	srand ( time(NULL) );
+	int r = rand() % (numberOfBands);
+	ULONGVector temp;
+	for(int i= r; i< numberOfBands-i;i++)
+	{
+		temp = Hasse1[i];
+		Hasse1[i] = Hasse2[i];
+		Hasse2[i] = temp;
+	}
+}
 void CPermutation::Synthesise()
 	{
 
